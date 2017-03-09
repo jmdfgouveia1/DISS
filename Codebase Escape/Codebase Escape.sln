@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codebase Escape", "Codebase Escape.csproj", "{0B355E74-9D19-29ED-7A7E-3B002ECDF241}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B355E74-9D19-29ED-7A7E-3B002ECDF241}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B355E74-9D19-29ED-7A7E-3B002ECDF241}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B355E74-9D19-29ED-7A7E-3B002ECDF241}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B355E74-9D19-29ED-7A7E-3B002ECDF241}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
