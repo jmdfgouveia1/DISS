@@ -81,6 +81,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\DOC.cs" />
+    <Compile Include="Assets\Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\Example Scripts\Beginner\1. Scripts as Behavior Components\ExampleBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Example Scripts\Beginner\11. Enabling and Disabling Components\EnableComponents.cs" />
     <Compile Include="Assets\Scripts\Example Scripts\Beginner\12. Activating GameObjects\ActiveObjects.cs" />
@@ -179,6 +181,7 @@
     <Compile Include="Assets\Scripts\Example Scripts\Intermediate\9. Overriding\AppleO.cs" />
     <Compile Include="Assets\Scripts\Example Scripts\Intermediate\9. Overriding\FruitO.cs" />
     <Compile Include="Assets\Scripts\Example Scripts\Intermediate\9. Overriding\FruitSaladO.cs" />
+    <Compile Include="Assets\Scripts\LOC.cs" />
     <Compile Include="Assets\Scripts\MainGame.cs" />
     <Compile Include="Assets\Scripts\Player1.cs" />
   </ItemGroup>

@@ -10,8 +10,8 @@ public class Player1 : MonoBehaviour {
 
     void Start ()
     {
-        moveSpeed = 15f;
-        jumpSpeed = 15f;
+        moveSpeed = 20f;
+        jumpSpeed = 20f;
     }
 
 	void Update () {
@@ -23,11 +23,4 @@ public class Player1 : MonoBehaviour {
             transform.Translate(Vector2.up * jumpSpeed * Time.deltaTime);
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        mg.locsLeft--;
-        moveSpeed = moveSpeed - 0.5f;
-        jumpSpeed = jumpSpeed - 0.5f;
-        Destroy(other.gameObject);
-    }
 }
