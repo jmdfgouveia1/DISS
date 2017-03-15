@@ -7,9 +7,16 @@ public class Door : MonoBehaviour {
 
     public Sprite s1, s2;
     public MainGame mg;
-	
-	// Update is called once per frame
-	void Update () {
+
+    private GameObject g;
+
+    void Start()
+    {
+        g = GameObject.FindWithTag("DoorText");
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (mg.locsLeft > 0)
             GetComponent<SpriteRenderer>().sprite = s1;
         else
@@ -19,6 +26,13 @@ public class Door : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other)
     {
         if (mg.locsLeft == 0)
-            GetComponent<Text>().text = "Press action button to proceed.";
+            g.GetComponent<Text>().text = "Press action button to proceed.";
+        else
+            g.GetComponent<Text>().text = "Get all LOCs to open the door.";
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        g.GetComponent<Text>().text = "";
     }
 }
