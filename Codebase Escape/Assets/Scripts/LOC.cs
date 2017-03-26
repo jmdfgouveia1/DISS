@@ -11,7 +11,7 @@ public class LOC : MonoBehaviour {
     {
         mg.locsLeft--;
         p.moveSpeed = p.moveSpeed - 0.5f;
-        p.jumpSpeed = p.jumpSpeed - 0.5f;
+        p.jumpPower = p.jumpPower - 0.5f;
         Destroy(gameObject);
     }
 }

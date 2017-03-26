@@ -81,6 +81,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BPFC.cs" />
     <Compile Include="Assets\Scripts\DOC.cs" />
     <Compile Include="Assets\Scripts\Door.cs" />
     <Compile Include="Assets\Scripts\Example Scripts\Beginner\1. Scripts as Behavior Components\ExampleBehaviourScript.cs" />
