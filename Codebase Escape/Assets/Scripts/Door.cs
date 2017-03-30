@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Door : MonoBehaviour {
@@ -48,7 +49,10 @@ public class Door : MonoBehaviour {
            else if (Input.GetKeyDown(KeyCode.D))
            {
                p.movement = true;
-               EditorApplication.isPlaying = false;
+                if (SceneManager.GetActiveScene().name == "Level1")
+                    SceneManager.LoadScene("Level2");
+                else if (SceneManager.GetActiveScene().name == "Level2")
+                    Application.Quit();
            }
        }
     }
@@ -57,11 +61,15 @@ public class Door : MonoBehaviour {
     {
         if (mg.locsLeft == 0)
         {
-            g1.GetComponent<Text>().text = "Press action button to proceed.";
+            if (SceneManager.GetActiveScene().name == "Level1")
+                g1.GetComponent<Text>().text = "Press action button to proceed.";
             onTrigger = true;
         }
         else
-            g1.GetComponent<Text>().text = "Get all LOCs to open the door.";
+        {
+            if (SceneManager.GetActiveScene().name == "Level1")
+                g1.GetComponent<Text>().text = "Get all LOCs to open the door.";
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)

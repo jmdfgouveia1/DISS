@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class DOC : MonoBehaviour {
@@ -40,7 +41,8 @@ public class DOC : MonoBehaviour {
 	
     void OnTriggerEnter2D(Collider2D other)
     {
-        g1.GetComponent<Text>().text = "Press action button to read doc.";
+        if (SceneManager.GetActiveScene().name == "Level1")
+            g1.GetComponent<Text>().text = "Press action button to read doc.";
         onTrigger = true;    
     }
 

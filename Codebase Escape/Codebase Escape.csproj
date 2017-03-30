@@ -182,6 +182,7 @@
     <Compile Include="Assets\Scripts\Example Scripts\Intermediate\9. Overriding\AppleO.cs" />
     <Compile Include="Assets\Scripts\Example Scripts\Intermediate\9. Overriding\FruitO.cs" />
     <Compile Include="Assets\Scripts\Example Scripts\Intermediate\9. Overriding\FruitSaladO.cs" />
+    <Compile Include="Assets\Scripts\FoeMovement.cs" />
     <Compile Include="Assets\Scripts\LOC.cs" />
     <Compile Include="Assets\Scripts\MainGame.cs" />
     <Compile Include="Assets\Scripts\Player1.cs" />
