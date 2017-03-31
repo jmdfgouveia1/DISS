@@ -4,19 +4,21 @@ using UnityEngine;
 
 public class LOC : MonoBehaviour {
 
-    public MainGame mg;
     public Player1 p;
 
-    private GameObject g;
+    private GameObject g1, g2;
+    private MainGame mg;
 
     void Start ()
     {
-        g = GameObject.FindWithTag("Player");
+        g1 = GameObject.FindWithTag("Player");
+        g2 = GameObject.FindWithTag("GameController");
+        mg = g2.GetComponent<MainGame>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (g == other.gameObject)
+        if (g1 == other.gameObject)
         {
             mg.locsLeft--;
             p.moveSpeed = p.moveSpeed - 0.5f;

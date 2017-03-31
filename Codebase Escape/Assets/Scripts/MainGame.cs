@@ -6,18 +6,20 @@ using UnityEngine.SceneManagement;
 public class MainGame : MonoBehaviour {
 
     public int locsLeft;
-    public static int score;
+    public int score;
     public bool paused;
 
 	// Use this for initialization
 	void Start () {
-        score = 5000;
-        paused = false;
+
+        DontDestroyOnLoad(gameObject);
 
         if (SceneManager.GetActiveScene().name == "Level1")
-            locsLeft = 5;
-        else if (SceneManager.GetActiveScene().name == "Level2")
-            locsLeft = 6;
+            score = 5000;
+
+        paused = false;
+
+        locsLeft = 5;
     }
 	
 	// Update is called once per frame
@@ -41,14 +43,15 @@ public class MainGame : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.R) && Time.timeScale == 1)
         {
             if (SceneManager.GetActiveScene().name == "Level1")
+            {
                 SceneManager.LoadSceneAsync("Level1");
+                Destroy(gameObject);
+            }  
             else if (SceneManager.GetActiveScene().name == "Level2")
                 SceneManager.LoadSceneAsync("Level2");
         }
 
         if (score > 0 && Time.timeScale == 1)
             score--;
-
-        Debug.Log(score);
 	}
 }

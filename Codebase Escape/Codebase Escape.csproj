@@ -126,12 +126,6 @@
     <Compile Include="Assets\Scripts\Example Scripts\Beginner\7. Scope and Access Modifiers\ScopeAndAccessModifiers.cs" />
     <Compile Include="Assets\Scripts\Example Scripts\Beginner\8. Awake and Start\AwakeAndStart.cs" />
     <Compile Include="Assets\Scripts\Example Scripts\Beginner\9. Update and FixedUpdate\UpdateAndFixedUpdate.cs" />
-    <Compile Include="Assets\Scripts\Example Scripts\Edt\1. Building a Custom Inspector\LevelScript.cs" />
-    <Compile Include="Assets\Scripts\Example Scripts\Edt\1. Building a Custom Inspector\LevelScriptEditor.cs" />
-    <Compile Include="Assets\Scripts\Example Scripts\Edt\2. The DrawDefaultInspector Function\SomeScriptE.cs" />
-    <Compile Include="Assets\Scripts\Example Scripts\Edt\2. The DrawDefaultInspector Function\SomeScriptEditor.cs" />
-    <Compile Include="Assets\Scripts\Example Scripts\Edt\3. Adding Buttons to a Custom Inspector\ObjectBuilderEditor.cs" />
-    <Compile Include="Assets\Scripts\Example Scripts\Edt\3. Adding Buttons to a Custom Inspector\ObjectBuilderScript.cs" />
     <Compile Include="Assets\Scripts\Example Scripts\Intermediate\1. Properties\Game.cs" />
     <Compile Include="Assets\Scripts\Example Scripts\Intermediate\1. Properties\Player.cs" />
     <Compile Include="Assets\Scripts\Example Scripts\Intermediate\10. Interfaces\Avatar.cs" />
@@ -184,8 +178,10 @@
     <Compile Include="Assets\Scripts\Example Scripts\Intermediate\9. Overriding\FruitSaladO.cs" />
     <Compile Include="Assets\Scripts\FoeMovement.cs" />
     <Compile Include="Assets\Scripts\LOC.cs" />
+    <Compile Include="Assets\Scripts\LevelIdentifier.cs" />
     <Compile Include="Assets\Scripts\MainGame.cs" />
     <Compile Include="Assets\Scripts\Player1.cs" />
+    <Compile Include="Assets\Scripts\ScoreIdentifier.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -6,17 +6,19 @@ using UnityEngine.UI;
 
 public class DOC : MonoBehaviour {
 
-    private GameObject g1, g2, g3;
+    private GameObject g1, g2, g3, g4;
     private bool onTrigger;
+    private MainGame mg;
 
     public Player1 p;
-    public MainGame mg;
 
     void Start ()
     {
         g1 = GameObject.FindWithTag("DocText");
         g2 = GameObject.FindWithTag("DocPanel");
         g3 = GameObject.FindWithTag("DocPanelText");
+        g4 = GameObject.FindWithTag("GameController");
+        mg = g4.GetComponent<MainGame>();
         onTrigger = false;
     }
 

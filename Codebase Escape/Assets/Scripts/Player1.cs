@@ -9,7 +9,6 @@ public class Player1 : MonoBehaviour {
     public bool movement;
 
     private Rigidbody2D rb;
-    private RaycastHit2D hit;
 
     void Start ()
     {
@@ -23,14 +22,12 @@ public class Player1 : MonoBehaviour {
 
 	void Update () {
 
-        hit = Physics2D.Raycast(transform.position, -Vector2.up, 0.1f);
-
         if (movement) {
             if (Input.GetKey(KeyCode.A))
                 transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
             if (Input.GetKey(KeyCode.D))
                 transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
-            if (Input.GetKeyDown(KeyCode.W) && hit.collider != null)
+            if (Input.GetKeyDown(KeyCode.W))
                 rb.AddForce(Vector2.up * jumpPower * 50);
             if (Input.GetKeyUp(KeyCode.W))
                 rb.AddForce(Vector2.down * jumpPower * 25);

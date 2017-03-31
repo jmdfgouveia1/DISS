@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,10 +7,10 @@ using UnityEngine.UI;
 public class Door : MonoBehaviour {
 
     public Sprite s1, s2;
-    public MainGame mg;
     public Player1 p;
 
-    private GameObject g1, g2, g3;
+    private MainGame mg;
+    private GameObject g1, g2, g3, g4;
     private bool onTrigger;
 
     void Start()
@@ -20,6 +19,8 @@ public class Door : MonoBehaviour {
         g1 = GameObject.FindWithTag("DoorText");
         g2 = GameObject.FindWithTag("DoorPanel");
         g3 = GameObject.FindWithTag("DoorPanelText");
+        g4 = GameObject.FindWithTag("GameController");
+        mg = g4.GetComponent<MainGame>();
     }
 
     // Update is called once per frame
@@ -50,9 +51,14 @@ public class Door : MonoBehaviour {
            {
                p.movement = true;
                 if (SceneManager.GetActiveScene().name == "Level1")
+                {
                     SceneManager.LoadScene("Level2");
+                    mg.locsLeft = 6;
+                }
                 else if (SceneManager.GetActiveScene().name == "Level2")
                     Application.Quit();
+
+                mg.score += 5000;
            }
        }
     }
