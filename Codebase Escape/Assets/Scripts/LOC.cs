@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class LOC : MonoBehaviour {
 
-    public Player1 p;
-
     private GameObject g1, g2;
     private MainGame mg;
 
@@ -20,9 +18,9 @@ public class LOC : MonoBehaviour {
     {
         if (g1 == other.gameObject)
         {
+            mg.moveSpeed -= 0.5f;
+            mg.jumpPower -= 0.5f;
             mg.locsLeft--;
-            p.moveSpeed = p.moveSpeed - 0.5f;
-            p.jumpPower = p.jumpPower - 0.5f;
             Destroy(gameObject);
         }
     }

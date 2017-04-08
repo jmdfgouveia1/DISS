@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class Player1 : MonoBehaviour {
 
-    public float moveSpeed;
-    public float jumpPower;
     public bool movement;
 
     private Rigidbody2D rb;
+    private GameObject g;
+    private MainGame mg;
 
     void Start ()
     {
         movement = true;
-        moveSpeed = 20f;
-        jumpPower = 20f;
-
+        g = GameObject.FindWithTag("GameController");
+        mg = g.GetComponent<MainGame>();
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 1;
     }
@@ -24,13 +23,13 @@ public class Player1 : MonoBehaviour {
 
         if (movement) {
             if (Input.GetKey(KeyCode.A))
-                transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
+                transform.Translate(Vector2.left * mg.moveSpeed * Time.deltaTime);
             if (Input.GetKey(KeyCode.D))
-                transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+                transform.Translate(Vector2.right * mg.moveSpeed * Time.deltaTime);
             if (Input.GetKeyDown(KeyCode.W))
-                rb.AddForce(Vector2.up * jumpPower * 50);
+                rb.AddForce(Vector2.up * mg.jumpPower * 50);
             if (Input.GetKeyUp(KeyCode.W))
-                rb.AddForce(Vector2.down * jumpPower * 25);
+                rb.AddForce(Vector2.down * mg.jumpPower * 25);
         }
     }
 

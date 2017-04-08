@@ -20,6 +20,8 @@ public class DOC : MonoBehaviour {
         g4 = GameObject.FindWithTag("GameController");
         mg = g4.GetComponent<MainGame>();
         onTrigger = false;
+        g2.GetComponent<Image>().enabled = false;
+        g3.GetComponent<Text>().enabled = false;
     }
 
     void Update ()

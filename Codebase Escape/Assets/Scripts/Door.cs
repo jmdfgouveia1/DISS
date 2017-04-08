@@ -21,6 +21,8 @@ public class Door : MonoBehaviour {
         g3 = GameObject.FindWithTag("DoorPanelText");
         g4 = GameObject.FindWithTag("GameController");
         mg = g4.GetComponent<MainGame>();
+        g2.GetComponent<Image>().enabled = false;
+        g3.GetComponent<Text>().enabled = false;
     }
 
     // Update is called once per frame
@@ -41,25 +43,41 @@ public class Door : MonoBehaviour {
        }
        else
        {
-           if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Return)) && !mg.paused)
-           {
-               g2.GetComponent<Image>().enabled = false;
-               g3.GetComponent<Text>().enabled = false;
-               p.movement = true;
-           }
-           else if (Input.GetKeyDown(KeyCode.D))
-           {
-               p.movement = true;
-                if (SceneManager.GetActiveScene().name == "Level1")
+            if (SceneManager.GetActiveScene().name == "Level1")
+            {
+                if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Return)) && !mg.paused)
                 {
-                    SceneManager.LoadScene("Level2");
-                    mg.locsLeft = 6;
+                    g2.GetComponent<Image>().enabled = false;
+                    g3.GetComponent<Text>().enabled = false;
+                    p.movement = true;
                 }
-                else if (SceneManager.GetActiveScene().name == "Level2")
+                else if (Input.GetKeyDown(KeyCode.D))
+                {
+                    p.movement = true;
+                    mg.moveSpeed += 2.5f;
+                    mg.jumpPower += 2.5f;
+                    mg.healthPoints += 2;
+                    mg.locsLeft = 6;
+                    mg.score += 5000;
+                    SceneManager.LoadScene("Level2");
+                }
+            }
+            else if (SceneManager.GetActiveScene().name == "Level2")
+            {
+                if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Return)) && !mg.paused)
+                {
+                    g2.GetComponent<Image>().enabled = false;
+                    g3.GetComponent<Text>().enabled = false;
+                    p.movement = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.D))
+                {
+                    //p.movement = true;
+                    //mg.score += 5000;
                     Application.Quit();
-
-                mg.score += 5000;
-           }
+                }
+            }
+           
        }
     }
 

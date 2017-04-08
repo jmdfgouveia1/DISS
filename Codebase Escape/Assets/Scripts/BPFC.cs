@@ -15,7 +15,7 @@ public class BPFC : MonoBehaviour {
             upbound = 0.75f;
             downbound = -10;
             leftbound = -11.25f;
-            rightbound = 12.15f;
+            rightbound = 12.25f;
         }
         else if (SceneManager.GetActiveScene().name == "Level2")
         {
