@@ -59,6 +59,7 @@ public class Door : MonoBehaviour {
                     mg.healthPoints += 2;
                     mg.locsLeft = 6;
                     mg.score += 5000;
+                    ResetAbilities();
                     SceneManager.LoadScene("Level2");
                 }
             }
@@ -72,13 +73,50 @@ public class Door : MonoBehaviour {
                 }
                 else if (Input.GetKeyDown(KeyCode.D))
                 {
-                    //p.movement = true;
-                    //mg.score += 5000;
+                    p.movement = true;
+                    mg.moveSpeed += 10.5f;
+                    mg.score += 5000;
+                    ResetAbilities();
+                    SceneManager.LoadScene("Level3");
+                }
+            }
+            else if (SceneManager.GetActiveScene().name == "Level3")
+            {
+                if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Return)) && !mg.paused)
+                {
+                    g2.GetComponent<Image>().enabled = false;
+                    g3.GetComponent<Text>().enabled = false;
+                    p.movement = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.D))
+                {
+                    p.movement = true;
+                    mg.jumpPower += 10;
+                    mg.score += 5000;
+                    ResetAbilities();
+                    SceneManager.LoadScene("Level4");
+                }
+            }
+            else if (SceneManager.GetActiveScene().name == "Level4")
+            {
+                if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Return)) && !mg.paused)
+                {
+                    g2.GetComponent<Image>().enabled = false;
+                    g3.GetComponent<Text>().enabled = false;
+                    p.movement = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.D))
+                {
+                    /*p.movement = true;
+                    mg.healthPoints += 10;
+                    mg.score += 5000;
+                    ResetAbilities();
+                    SceneManager.LoadScene("Level5");*/
                     Application.Quit();
                 }
             }
-           
-       }
+
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -100,5 +138,11 @@ public class Door : MonoBehaviour {
     {
         onTrigger = false;
         g1.GetComponent<Text>().text = "";
+    }
+
+    void ResetAbilities()
+    {
+        mg.resetMoveSpeed = mg.moveSpeed;
+        mg.resetJumpPower = mg.jumpPower;
     }
 }

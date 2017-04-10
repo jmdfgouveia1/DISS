@@ -8,12 +8,12 @@ public class MainGame : MonoBehaviour {
 
     public int locsLeft;
     public int score;
-    public float moveSpeed;
-    public float jumpPower;
+    public float moveSpeed, resetMoveSpeed;
+    public float jumpPower, resetJumpPower;
     public int healthPoints;
     public bool paused;
 
-    private GameObject g1, g2, g3, g4, g5, g6, g7;
+    private GameObject g1, g2, g3, g4, g5, g6, g7, g8;
     private bool gameOver;
 
 	// Use this for initialization
@@ -24,7 +24,9 @@ public class MainGame : MonoBehaviour {
         paused = false;
         //locsLeft = 5;
         moveSpeed = 20f;
+        resetMoveSpeed = moveSpeed;
         jumpPower = 20f;
+        resetJumpPower = jumpPower;
         healthPoints = 3;
         
         g1 = GameObject.FindWithTag("HPCount");
@@ -34,6 +36,7 @@ public class MainGame : MonoBehaviour {
         g5 = GameObject.FindWithTag("DuplicateFoe1");
         g6 = GameObject.FindWithTag("DuplicateFoe2");
         g7 = GameObject.FindWithTag("DuplicateFoe3");
+        g8 = GameObject.FindWithTag("DamageFoe");
 
         g2.GetComponent<Image>().enabled = false;
         g3.GetComponent<Text>().enabled = false;
@@ -68,13 +71,26 @@ public class MainGame : MonoBehaviour {
                     SceneManager.LoadSceneAsync("Level2");
                     locsLeft = 6;
                 }
+                else if (SceneManager.GetActiveScene().name == "Level3")
+                {
+                    SceneManager.LoadSceneAsync("Level3");
+                    locsLeft = 7;
+                }
+                else if (SceneManager.GetActiveScene().name == "Level4")
+                {
+                    SceneManager.LoadSceneAsync("Level4");
+                    locsLeft = 8;
+                }
+
+                moveSpeed = resetMoveSpeed;
+                jumpPower = resetJumpPower;
             }
+
+            if (score > 0 && Time.timeScale == 1)
+                score--;
         }
 
         g1.GetComponent<Text>().text = healthPoints.ToString();
-
-        if (score > 0 && Time.timeScale == 1)
-            score--;
 
         if (healthPoints == 0)
         {
@@ -85,6 +101,7 @@ public class MainGame : MonoBehaviour {
             g5.GetComponent<Foe>().movement = false;
             g6.GetComponent<Foe>().movement = false;
             g7.GetComponent<Foe>().movement = false;
+            g8.GetComponent<Foe>().movement = false;
 
             if (Input.GetKeyDown(KeyCode.Return))
                 Restart();
