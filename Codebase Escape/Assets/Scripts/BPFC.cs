@@ -24,8 +24,16 @@ public class BPFC : MonoBehaviour {
             leftbound = -21.25f;
             rightbound = 22.25f;
         }
-        
-	}
+        else if (SceneManager.GetActiveScene().name == "Level3")
+        {
+            upbound = 23.25f;
+            downbound = -32.75f;
+            leftbound = -31.5f;
+            rightbound = 32.5f;
+        }
+
+
+    }
 	
 	// Update is called once per frame
 	void Update () {

@@ -182,8 +182,10 @@
     <Compile Include="Assets\Scripts\LOCIdentifier.cs" />
     <Compile Include="Assets\Scripts\LevelIdentifier.cs" />
     <Compile Include="Assets\Scripts\MainGame.cs" />
+    <Compile Include="Assets\Scripts\MovingPlatform.cs" />
     <Compile Include="Assets\Scripts\Player1.cs" />
     <Compile Include="Assets\Scripts\ScoreIdentifier.cs" />
+    <Compile Include="Assets\Scripts\Switch.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

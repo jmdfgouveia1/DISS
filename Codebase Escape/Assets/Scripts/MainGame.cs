@@ -13,7 +13,7 @@ public class MainGame : MonoBehaviour {
     public int healthPoints;
     public bool paused;
 
-    private GameObject g1, g2, g3, g4, g5, g6, g7, g8;
+    private GameObject g1, g2, g3, g4, g5, g6, g7, g8, g9;
     private bool gameOver;
 
 	// Use this for initialization
@@ -37,7 +37,7 @@ public class MainGame : MonoBehaviour {
         g6 = GameObject.FindWithTag("DuplicateFoe2");
         g7 = GameObject.FindWithTag("DuplicateFoe3");
         g8 = GameObject.FindWithTag("DamageFoe");
-
+        g9 = GameObject.FindWithTag("UltimateFoe");
         g2.GetComponent<Image>().enabled = false;
         g3.GetComponent<Text>().enabled = false;
     }
@@ -102,6 +102,7 @@ public class MainGame : MonoBehaviour {
             g6.GetComponent<Foe>().movement = false;
             g7.GetComponent<Foe>().movement = false;
             g8.GetComponent<Foe>().movement = false;
+            g9.GetComponent<Foe>().movement = false;
 
             if (Input.GetKeyDown(KeyCode.Return))
                 Restart();

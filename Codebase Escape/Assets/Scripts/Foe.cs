@@ -10,7 +10,6 @@ public class Foe : MonoBehaviour {
     private GameObject g1, g2;
     private MainGame mg;
     private SpriteRenderer sr;
-    private bool immunity;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +20,7 @@ public class Foe : MonoBehaviour {
         mg = g1.GetComponent<MainGame>();
         sr = g2.GetComponent<SpriteRenderer>();
         movement = true;
-        immunity = false;
+        sr.enabled = true;
 	}
 	
 	// Update is called once per frame
@@ -37,18 +36,7 @@ public class Foe : MonoBehaviour {
                 moveLeft = true;
             else if (transform.position.x <= leftbound)
                 moveLeft = false;
-        }
-        
-        if (immunity == true)
-        {
-            GetComponent<PolygonCollider2D>().isTrigger = false;
-            sr.enabled = !sr.enabled;
-        }
-        else
-        {
-            sr.enabled = true;
-            GetComponent<PolygonCollider2D>().isTrigger = true;
-        }   
+        }  
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -64,15 +52,22 @@ public class Foe : MonoBehaviour {
                 mg.moveSpeed -= 0.5f;
                 mg.jumpPower -= 0.5f;
             }
+            else if (gameObject.tag == "DamageFoe")
+                mg.healthPoints--;
 
-            StartCoroutine(PlayerImmunity(2.0f));
+            StartCoroutine(PlayerImmunity(2.0f, 0.2f));
         }
     }
 
-    private IEnumerator PlayerImmunity(float time)
+    private IEnumerator PlayerImmunity(float time, float subTime)
     {
-        immunity = true;
-        yield return new WaitForSeconds(time);
-        immunity = false;
+        GetComponent<PolygonCollider2D>().isTrigger = false;
+        while (time > 0)
+        {
+            sr.enabled = !sr.enabled;
+            yield return new WaitForSeconds(subTime);
+            time -= subTime;
+        }
+        GetComponent<PolygonCollider2D>().isTrigger = true;
     }
 }

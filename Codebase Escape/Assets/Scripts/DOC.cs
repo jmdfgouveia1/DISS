@@ -22,6 +22,25 @@ public class DOC : MonoBehaviour {
         onTrigger = false;
         g2.GetComponent<Image>().enabled = false;
         g3.GetComponent<Text>().enabled = false;
+
+        if (SceneManager.GetActiveScene().name == "Level1")
+            g3.GetComponent<Text>().text = "The text is red but the background is blue.";
+        else if (SceneManager.GetActiveScene().name == "Level2")
+            g3.GetComponent<Text>().text = "The text is red but the background is blue.";
+        else if (SceneManager.GetActiveScene().name == "Level3")
+        {
+            if (gameObject.tag == "Doc1")
+                g3.GetComponent<Text>().text = "The text is red but the background is blue.";
+            else if (gameObject.tag == "Doc2")
+                g3.GetComponent<Text>().text = "The text is red but the background is blue.";
+        }
+        else if (SceneManager.GetActiveScene().name == "Level4")
+        {
+            if (gameObject.tag == "Doc1")
+                g3.GetComponent<Text>().text = "The text is red but the background is blue.";
+            else if (gameObject.tag == "Doc2")
+                g3.GetComponent<Text>().text = "The text is red but the background is blue.";
+        }
     }
 
     void Update ()

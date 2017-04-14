@@ -10,7 +10,7 @@ public class Door : MonoBehaviour {
     public Player1 p;
 
     private MainGame mg;
-    private GameObject g1, g2, g3, g4;
+    private GameObject g1, g2, g3, g4, g5, g6;
     private bool onTrigger;
 
     void Start()
@@ -20,6 +20,8 @@ public class Door : MonoBehaviour {
         g2 = GameObject.FindWithTag("DoorPanel");
         g3 = GameObject.FindWithTag("DoorPanelText");
         g4 = GameObject.FindWithTag("GameController");
+        g5 = GameObject.FindWithTag("Doc1");
+        g6 = GameObject.FindWithTag("Doc2");
         mg = g4.GetComponent<MainGame>();
         g2.GetComponent<Image>().enabled = false;
         g3.GetComponent<Text>().enabled = false;
@@ -60,6 +62,7 @@ public class Door : MonoBehaviour {
                     mg.locsLeft = 6;
                     mg.score += 5000;
                     ResetAbilities();
+                    AppendDOCs();
                     SceneManager.LoadScene("Level2");
                 }
             }
@@ -75,7 +78,7 @@ public class Door : MonoBehaviour {
                 {
                     p.movement = true;
                     mg.moveSpeed += 10.5f;
-                    mg.score += 5000;
+                    mg.score += 10000;
                     ResetAbilities();
                     SceneManager.LoadScene("Level3");
                 }
@@ -92,7 +95,7 @@ public class Door : MonoBehaviour {
                 {
                     p.movement = true;
                     mg.jumpPower += 10;
-                    mg.score += 5000;
+                    mg.score += 15000;
                     ResetAbilities();
                     SceneManager.LoadScene("Level4");
                 }
@@ -109,7 +112,7 @@ public class Door : MonoBehaviour {
                 {
                     /*p.movement = true;
                     mg.healthPoints += 10;
-                    mg.score += 5000;
+                    mg.score += 20000;
                     ResetAbilities();
                     SceneManager.LoadScene("Level5");*/
                     Application.Quit();
@@ -144,5 +147,10 @@ public class Door : MonoBehaviour {
     {
         mg.resetMoveSpeed = mg.moveSpeed;
         mg.resetJumpPower = mg.jumpPower;
+    }
+
+    void AppendDOCs()
+    {
+        
     }
 }
