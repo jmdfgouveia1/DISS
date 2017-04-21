@@ -29,7 +29,7 @@ public class Player1 : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.W))
                 rb.AddForce(Vector2.up * mg.jumpPower * 50);
             if (Input.GetKeyUp(KeyCode.W))
-                rb.AddForce(Vector2.down * mg.jumpPower * 25);
+                rb.AddForce(Vector2.down * mg.jumpPower * 50);
         }
     }
 

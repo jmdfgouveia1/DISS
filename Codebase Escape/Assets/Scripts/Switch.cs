@@ -28,7 +28,15 @@ public class Switch : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Return) && onTrigger && !mg.paused)
+        if (gameObject.tag == "HiddenSwitch")
+        {
+            if (mg.locsLeft > 0)
+                GetComponent<SpriteRenderer>().enabled = false;
+            else
+                GetComponent<SpriteRenderer>().enabled = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return) && onTrigger && Time.timeScale == 1 && GetComponent<SpriteRenderer>().enabled)
         {
             if (GetComponent<SpriteRenderer>().sprite == s1)
             {

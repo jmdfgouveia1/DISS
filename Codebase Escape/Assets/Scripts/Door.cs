@@ -10,6 +10,7 @@ public class Door : MonoBehaviour {
     public Player1 p;
 
     private MainGame mg;
+    private DOC doc1, doc2;
     private GameObject g1, g2, g3, g4, g5, g6;
     private bool onTrigger;
 
@@ -23,8 +24,12 @@ public class Door : MonoBehaviour {
         g5 = GameObject.FindWithTag("Doc1");
         g6 = GameObject.FindWithTag("Doc2");
         mg = g4.GetComponent<MainGame>();
+        doc1 = g5.GetComponent<DOC>();
+        if (g6)
+            doc2 = g6.GetComponent<DOC>();
         g2.GetComponent<Image>().enabled = false;
         g3.GetComponent<Text>().enabled = false;
+        g3.GetComponent<Text>().fontSize = 42;
     }
 
     // Update is called once per frame
@@ -36,10 +41,11 @@ public class Door : MonoBehaviour {
 
        if (!g2.GetComponent<Image>().enabled)
        {
-            if (Input.GetKeyDown(KeyCode.Return) && onTrigger && !mg.paused)
+            if (Input.GetKeyDown(KeyCode.Return) && onTrigger && Time.timeScale == 1)
             {
                 g2.GetComponent<Image>().enabled = true;
                 g3.GetComponent<Text>().enabled = true;
+                mg.activePanel = true;
                 p.movement = false;
             }
        }
@@ -47,75 +53,97 @@ public class Door : MonoBehaviour {
        {
             if (SceneManager.GetActiveScene().name == "Level1")
             {
-                if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Return)) && !mg.paused)
+                if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1)
                 {
                     g2.GetComponent<Image>().enabled = false;
                     g3.GetComponent<Text>().enabled = false;
-                    p.movement = true;
+                    PanelExit();
                 }
-                else if (Input.GetKeyDown(KeyCode.D))
+                else if (Input.GetKeyDown(KeyCode.S))
                 {
-                    p.movement = true;
+                    PanelExit();
                     mg.moveSpeed += 2.5f;
                     mg.jumpPower += 2.5f;
                     mg.healthPoints += 2;
                     mg.locsLeft = 6;
                     mg.score += 5000;
                     ResetAbilities();
-                    AppendDOCs();
-                    SceneManager.LoadScene("Level2");
+                    mg.texts.Add(doc1.text1);
+                    SceneManager.LoadSceneAsync("Level2");
                 }
             }
             else if (SceneManager.GetActiveScene().name == "Level2")
             {
-                if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Return)) && !mg.paused)
+                if ((Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1)
                 {
                     g2.GetComponent<Image>().enabled = false;
                     g3.GetComponent<Text>().enabled = false;
-                    p.movement = true;
+                    PanelExit();
                 }
-                else if (Input.GetKeyDown(KeyCode.D))
+                else if (Input.GetKeyDown(KeyCode.O))
                 {
-                    p.movement = true;
-                    mg.moveSpeed += 10.5f;
+                    PanelExit();
+                    mg.moveSpeed += 10;
+                    mg.locsLeft = 7;
                     mg.score += 10000;
                     ResetAbilities();
-                    SceneManager.LoadScene("Level3");
+                    mg.texts.Add(doc1.text1);
+                    SceneManager.LoadSceneAsync("Level3");
                 }
             }
             else if (SceneManager.GetActiveScene().name == "Level3")
             {
-                if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Return)) && !mg.paused)
+                if ((Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1)
                 {
                     g2.GetComponent<Image>().enabled = false;
                     g3.GetComponent<Text>().enabled = false;
-                    p.movement = true;
+                    PanelExit();
                 }
-                else if (Input.GetKeyDown(KeyCode.D))
+                else if (Input.GetKeyDown(KeyCode.L))
                 {
-                    p.movement = true;
+                    PanelExit();
                     mg.jumpPower += 10;
+                    mg.locsLeft = 8;
                     mg.score += 15000;
                     ResetAbilities();
-                    SceneManager.LoadScene("Level4");
+                    mg.texts.Add(doc1.text1);
+                    mg.texts.Add(doc2.text2);
+                    SceneManager.LoadSceneAsync("Level4");
                 }
             }
             else if (SceneManager.GetActiveScene().name == "Level4")
             {
-                if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Return)) && !mg.paused)
+                if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1)
                 {
                     g2.GetComponent<Image>().enabled = false;
                     g3.GetComponent<Text>().enabled = false;
-                    p.movement = true;
+                    PanelExit();
+                }
+                else if (Input.GetKeyDown(KeyCode.I))
+                {
+                    PanelExit();
+                    mg.healthPoints += 10;
+                    mg.score += 20000;
+                    mg.locsLeft = 1;
+                    ResetAbilities();
+                    mg.texts.Add(doc1.text1);
+                    mg.texts.Add(doc2.text2);
+                    SceneManager.LoadSceneAsync("Level5");
+                    Application.Quit();
+                }
+            }
+            else if (SceneManager.GetActiveScene().name == "Level5")
+            {
+                if ((Input.GetKeyDown(KeyCode.N) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1)
+                {
+                    g2.GetComponent<Image>().enabled = false;
+                    g3.GetComponent<Text>().enabled = false;
+                    PanelExit();
                 }
                 else if (Input.GetKeyDown(KeyCode.D))
                 {
-                    /*p.movement = true;
-                    mg.healthPoints += 10;
-                    mg.score += 20000;
-                    ResetAbilities();
-                    SceneManager.LoadScene("Level5");*/
-                    Application.Quit();
+                    PanelExit();
+                    SceneManager.LoadSceneAsync("Success");
                 }
             }
 
@@ -143,14 +171,17 @@ public class Door : MonoBehaviour {
         g1.GetComponent<Text>().text = "";
     }
 
+    void PanelExit()
+    {
+        p.movement = true;
+        mg.activePanel = false;
+    }
+
     void ResetAbilities()
     {
         mg.resetMoveSpeed = mg.moveSpeed;
         mg.resetJumpPower = mg.jumpPower;
-    }
-
-    void AppendDOCs()
-    {
-        
+        mg.resetScore = mg.score;
+        mg.resetHPs = mg.healthPoints;
     }
 }
