@@ -62,8 +62,8 @@ public class Door : MonoBehaviour {
                 else if (Input.GetKeyDown(KeyCode.S))
                 {
                     PanelExit();
-                    mg.moveSpeed += 2.5f;
-                    mg.jumpPower += 2.5f;
+                    mg.moveSpeed += 4;
+                    mg.jumpPower += 4;
                     mg.healthPoints += 2;
                     mg.locsLeft = 6;
                     mg.score += 5000;
@@ -113,7 +113,7 @@ public class Door : MonoBehaviour {
             }
             else if (SceneManager.GetActiveScene().name == "Level4")
             {
-                if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1)
+                if ((Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1)
                 {
                     g2.GetComponent<Image>().enabled = false;
                     g3.GetComponent<Text>().enabled = false;
@@ -129,12 +129,11 @@ public class Door : MonoBehaviour {
                     mg.texts.Add(doc1.text1);
                     mg.texts.Add(doc2.text2);
                     SceneManager.LoadSceneAsync("Level5");
-                    Application.Quit();
                 }
             }
             else if (SceneManager.GetActiveScene().name == "Level5")
             {
-                if ((Input.GetKeyDown(KeyCode.N) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1)
+                if ((Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1)
                 {
                     g2.GetComponent<Image>().enabled = false;
                     g3.GetComponent<Text>().enabled = false;
@@ -143,6 +142,8 @@ public class Door : MonoBehaviour {
                 else if (Input.GetKeyDown(KeyCode.D))
                 {
                     PanelExit();
+                    mg.score += 5000;
+                    mg.success = true;
                     SceneManager.LoadSceneAsync("Success");
                 }
             }
@@ -181,7 +182,5 @@ public class Door : MonoBehaviour {
     {
         mg.resetMoveSpeed = mg.moveSpeed;
         mg.resetJumpPower = mg.jumpPower;
-        mg.resetScore = mg.score;
-        mg.resetHPs = mg.healthPoints;
     }
 }

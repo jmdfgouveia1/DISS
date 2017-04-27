@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Return))
-            SceneManager.LoadSceneAsync("Scene1");
+            SceneManager.LoadSceneAsync("Level1");
         else if (Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();
 	}

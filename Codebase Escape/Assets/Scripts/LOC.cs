@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LOC : MonoBehaviour {
 
@@ -18,10 +19,24 @@ public class LOC : MonoBehaviour {
     {
         if (g1 == other.gameObject)
         {
-            mg.moveSpeed -= 0.5f;
-            mg.jumpPower -= 0.5f;
+            if (SceneManager.GetActiveScene().name == "Level1")
+                PlayerEffect(0.7f);
+            else if (SceneManager.GetActiveScene().name == "Level2")
+                PlayerEffect(0.6f);
+            else if (SceneManager.GetActiveScene().name == "Level3")
+                PlayerEffect(0.5f);
+            else if (SceneManager.GetActiveScene().name == "Level4")
+                PlayerEffect(0.4f);
+            else if (SceneManager.GetActiveScene().name == "Level5")
+                PlayerEffect(0.3f);
             mg.locsLeft--;
             Destroy(gameObject);
         }
+    }
+
+    void PlayerEffect(float f)
+    {
+        mg.moveSpeed -= f;
+        mg.jumpPower -= f;
     }
 }

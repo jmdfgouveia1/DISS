@@ -56,6 +56,16 @@ public class DOC : MonoBehaviour {
             else if (gameObject.tag == "Doc2")
                 g3.GetComponent<Text>().text = text2;
         }
+        else if (SceneManager.GetActiveScene().name == "Level5")
+        {
+            text1 = "The text is red but the background is blue.";
+            text2 = "The text is red but the background is blue.";
+            if (gameObject.tag == "Doc1")
+                g3.GetComponent<Text>().text = text1;
+            else if (gameObject.tag == "Doc2")
+                g3.GetComponent<Text>().text = text2;
+        }
+
 
         if (Input.GetKeyDown(KeyCode.Return) && onTrigger && Time.timeScale == 1)
         {

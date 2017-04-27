@@ -1,15 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Foe : MonoBehaviour {
 
-    public bool movement, moveLeft;
+    public bool moveLeft;
     public float leftbound, rightbound;
 
     private GameObject g1, g2;
     private MainGame mg;
-    private SpriteRenderer sr;
 
 	// Use this for initialization
 	void Start () {
@@ -18,25 +18,36 @@ public class Foe : MonoBehaviour {
         g1 = GameObject.FindWithTag("GameController");
         g2 = GameObject.FindWithTag("Player");
         mg = g1.GetComponent<MainGame>();
-        sr = g2.GetComponent<SpriteRenderer>();
-        movement = true;
-        sr.enabled = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (movement)
-        {
-            if (moveLeft)
-                transform.Translate(Vector2.left * 2 * Time.deltaTime);
-            else
-                transform.Translate(Vector2.right * 2 * Time.deltaTime);
+        if (moveLeft)
+            transform.Translate(Vector2.left * 2 * Time.deltaTime);
+        else 
+            transform.Translate(Vector2.right * 2 * Time.deltaTime);
 
-            if (transform.position.x >= rightbound)
+        if (transform.position.x >= rightbound)
+        {
+            if (SceneManager.GetActiveScene().name == "Level5" &&
+                (gameObject.tag == "DuplicateFoe2" || gameObject.tag == "DamageFoe"))
+                Destroy(gameObject);
+            else
                 moveLeft = true;
-            else if (transform.position.x <= leftbound)
+        } 
+        else if (transform.position.x <= leftbound)
+        {
+            if (SceneManager.GetActiveScene().name == "Level5" &&
+                (gameObject.tag == "DuplicateFoe1" || gameObject.tag == "DuplicateFoe3"))
+                Destroy(gameObject);
+            else
                 moveLeft = false;
-        }  
+        }
+        
+        if (mg.immunity)
+            GetComponent<PolygonCollider2D>().isTrigger = false;
+        else
+            GetComponent<PolygonCollider2D>().isTrigger = true;
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -55,19 +66,7 @@ public class Foe : MonoBehaviour {
             else if (gameObject.tag == "DamageFoe")
                 mg.healthPoints--;
 
-            StartCoroutine(PlayerImmunity(2.0f, 0.2f));
+            mg.immunity = true;
         }
-    }
-
-    private IEnumerator PlayerImmunity(float time, float subTime)
-    {
-        GetComponent<PolygonCollider2D>().isTrigger = false;
-        while (time > 0)
-        {
-            sr.enabled = !sr.enabled;
-            yield return new WaitForSeconds(subTime);
-            time -= subTime;
-        }
-        GetComponent<PolygonCollider2D>().isTrigger = true;
     }
 }

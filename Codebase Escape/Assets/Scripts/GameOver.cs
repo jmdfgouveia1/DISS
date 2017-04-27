@@ -18,7 +18,7 @@ public class GameOver : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Return))
         {
             Destroy(g1);
-            SceneManager.LoadSceneAsync("Scene1");
+            SceneManager.LoadSceneAsync("Level1");
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
