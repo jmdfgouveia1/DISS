@@ -40,8 +40,8 @@ public class DOC : MonoBehaviour {
         }
         else if (SceneManager.GetActiveScene().name == "Level3")
         {
-            text1 = "The text is red but the background is blue;";
-            text2 = "The text is red but the background is blue:";
+            text1 = "Software architecture is important because it helps us understand large systems easily and it contributes to the reuse of large components and the frameworks in which they can be integrated.";
+            text2 = "The importance of software architecture is that it exposes the ways in which a software system is expected to evolve, facilitates analysis of that system and impacts the market drivers relevant to software businesses.";
             if (gameObject.tag == "Doc1")
                 g3.GetComponent<Text>().text = text1;
             else if (gameObject.tag == "Doc2")
@@ -49,8 +49,8 @@ public class DOC : MonoBehaviour {
         }
         else if (SceneManager.GetActiveScene().name == "Level4")
         {
-            text1 = "The text is red but the background is blue.";
-            text2 = "The text is red but the background is blue.";
+            text1 = "Architecture Description Languages (ADLs) are notations responsible for characterizing software architectures, typically also providing tools for parsing and generating architecture descriptions.\n\nDistinct examples of ADLs include Adage, Aesop, C2, Darwin, Rapide, SADL, UniCon, Meta-H and Wright.";
+            text2 = "There are different models for architecture design. These models typically specify a design vocabulary, restrictions on how that vocabulary is employed and semantic assumptions about that vocabulary.\n\nDistinct examples of architectural models include pipe-and-filter, blackboard, client-server, event-based and object-based.";
             if (gameObject.tag == "Doc1")
                 g3.GetComponent<Text>().text = text1;
             else if (gameObject.tag == "Doc2")
@@ -58,8 +58,8 @@ public class DOC : MonoBehaviour {
         }
         else if (SceneManager.GetActiveScene().name == "Level5")
         {
-            text1 = "The text is red but the background is blue.";
-            text2 = "The text is red but the background is blue.";
+            text1 = "Some examples of software architectures are the International Standard Organization's Open Systems Interconnection Reference Model (a layered network architecture), the NIST/ECMA Reference Model (a generic software engineering environment architecture based on layered communication substrates) and the X Window System (a distributed windowed user interface architecture based on event triggering and callbacks).";
+            text2 = "Another example of a software architecture is Camelot, which is built using the client-server model and uses remote procedure calls both locally and remotely to provide communication among applications and servers.";
             if (gameObject.tag == "Doc1")
                 g3.GetComponent<Text>().text = text1;
             else if (gameObject.tag == "Doc2")
