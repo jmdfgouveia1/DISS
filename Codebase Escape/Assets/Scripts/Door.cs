@@ -12,11 +12,12 @@ public class Door : MonoBehaviour {
     private MainGame mg;
     private DOC doc1, doc2;
     private GameObject g1, g2, g3, g4, g5, g6;
-    private bool onTrigger;
+    private bool onTrigger, goodFirstTry;
 
     void Start()
     {
         onTrigger = false;
+        goodFirstTry = true;
         g1 = GameObject.FindWithTag("DoorText");
         g2 = GameObject.FindWithTag("DoorPanel");
         g3 = GameObject.FindWithTag("DoorPanelText");
@@ -55,8 +56,7 @@ public class Door : MonoBehaviour {
             {
                 if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1)
                 {
-                    g2.GetComponent<Image>().enabled = false;
-                    g3.GetComponent<Text>().enabled = false;
+                    goodFirstTry = false;
                     PanelExit();
                 }
                 else if (Input.GetKeyDown(KeyCode.S))
@@ -68,6 +68,7 @@ public class Door : MonoBehaviour {
                     mg.locsLeft = 6;
                     mg.score += 5000;
                     ResetAbilities();
+                    ExtraLife();
                     mg.texts.Add(doc1.text1);
                     SceneManager.LoadSceneAsync("Level2");
                 }
@@ -76,8 +77,7 @@ public class Door : MonoBehaviour {
             {
                 if ((Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1)
                 {
-                    g2.GetComponent<Image>().enabled = false;
-                    g3.GetComponent<Text>().enabled = false;
+                    goodFirstTry = false;
                     PanelExit();
                 }
                 else if (Input.GetKeyDown(KeyCode.O))
@@ -87,7 +87,8 @@ public class Door : MonoBehaviour {
                     mg.locsLeft = 7;
                     mg.score += 10000;
                     ResetAbilities();
-                    mg.texts.Add(doc1.text1);
+                    ExtraLife();
+                    AddTexts();
                     SceneManager.LoadSceneAsync("Level3");
                 }
             }
@@ -95,8 +96,7 @@ public class Door : MonoBehaviour {
             {
                 if ((Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1)
                 {
-                    g2.GetComponent<Image>().enabled = false;
-                    g3.GetComponent<Text>().enabled = false;
+                    goodFirstTry = false;
                     PanelExit();
                 }
                 else if (Input.GetKeyDown(KeyCode.L))
@@ -106,8 +106,8 @@ public class Door : MonoBehaviour {
                     mg.locsLeft = 8;
                     mg.score += 15000;
                     ResetAbilities();
-                    mg.texts.Add(doc1.text1);
-                    mg.texts.Add(doc2.text2);
+                    ExtraLife();
+                    AddTexts();
                     SceneManager.LoadSceneAsync("Level4");
                 }
             }
@@ -115,8 +115,7 @@ public class Door : MonoBehaviour {
             {
                 if ((Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1)
                 {
-                    g2.GetComponent<Image>().enabled = false;
-                    g3.GetComponent<Text>().enabled = false;
+                    goodFirstTry = false;
                     PanelExit();
                 }
                 else if (Input.GetKeyDown(KeyCode.I))
@@ -126,8 +125,8 @@ public class Door : MonoBehaviour {
                     mg.score += 20000;
                     mg.locsLeft = 1;
                     ResetAbilities();
-                    mg.texts.Add(doc1.text1);
-                    mg.texts.Add(doc2.text2);
+                    ExtraLife();
+                    AddTexts();
                     SceneManager.LoadSceneAsync("Level5");
                 }
             }
@@ -135,8 +134,7 @@ public class Door : MonoBehaviour {
             {
                 if ((Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1)
                 {
-                    g2.GetComponent<Image>().enabled = false;
-                    g3.GetComponent<Text>().enabled = false;
+                    goodFirstTry = false;
                     PanelExit();
                 }
                 else if (Input.GetKeyDown(KeyCode.D))
@@ -174,6 +172,8 @@ public class Door : MonoBehaviour {
 
     void PanelExit()
     {
+        g2.GetComponent<Image>().enabled = false;
+        g3.GetComponent<Text>().enabled = false;
         p.movement = true;
         mg.activePanel = false;
     }
@@ -182,5 +182,17 @@ public class Door : MonoBehaviour {
     {
         mg.resetMoveSpeed = mg.moveSpeed;
         mg.resetJumpPower = mg.jumpPower;
+    }
+
+    void ExtraLife()
+    {
+        if (goodFirstTry)
+            mg.healthPoints++;
+    }
+
+    void AddTexts()
+    {
+        mg.texts.Add(doc1.text1);
+        mg.texts.Add(doc2.text2);
     }
 }

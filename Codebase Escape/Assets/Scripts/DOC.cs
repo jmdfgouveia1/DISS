@@ -35,7 +35,8 @@ public class DOC : MonoBehaviour {
         }
         else if (SceneManager.GetActiveScene().name == "Level2")
         {
-            text1 = "Structural issues that software architecture is meant to address include the following:\n\nGross organization and global control structure; protocols for communication, synchronization and data access; assignment of functionality to design elements; physical distribution; composition of design elements; scaling and performance; and selection among design alternatives.";
+            text1 = "As software systems become bigger and more complex over time, it becomes a necessity to solve the problems that come with designing the overall structure of these systems.\n\nThis is where software architecture comes in.";
+            text2 = "Structural issues that software architecture is meant to address include the following:\n\nGross organization and global control structure; protocols for communication, synchronization and data access; assignment of functionality to design elements; physical distribution; composition of design elements; scaling and performance; and selection among design alternatives.";
             g3.GetComponent<Text>().text = text1;
         }
         else if (SceneManager.GetActiveScene().name == "Level3")
