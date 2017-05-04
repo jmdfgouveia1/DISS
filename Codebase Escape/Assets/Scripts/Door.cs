@@ -30,7 +30,7 @@ public class Door : MonoBehaviour {
             doc2 = g6.GetComponent<DOC>();
         g2.GetComponent<Image>().enabled = false;
         g3.GetComponent<Text>().enabled = false;
-        g3.GetComponent<Text>().fontSize = 42;
+        g3.GetComponent<Text>().fontSize = 36;
     }
 
     // Update is called once per frame
@@ -70,7 +70,7 @@ public class Door : MonoBehaviour {
                     ResetAbilities();
                     ExtraLife();
                     mg.texts.Add(doc1.text1);
-                    SceneManager.LoadSceneAsync("Level2");
+                    SceneManager.LoadSceneAsync("Tome2");
                 }
             }
             else if (SceneManager.GetActiveScene().name == "Level2")
@@ -89,7 +89,7 @@ public class Door : MonoBehaviour {
                     ResetAbilities();
                     ExtraLife();
                     AddTexts();
-                    SceneManager.LoadSceneAsync("Level3");
+                    SceneManager.LoadSceneAsync("Tome3");
                 }
             }
             else if (SceneManager.GetActiveScene().name == "Level3")
@@ -108,7 +108,7 @@ public class Door : MonoBehaviour {
                     ResetAbilities();
                     ExtraLife();
                     AddTexts();
-                    SceneManager.LoadSceneAsync("Level4");
+                    SceneManager.LoadSceneAsync("Tome4");
                 }
             }
             else if (SceneManager.GetActiveScene().name == "Level4")
@@ -127,7 +127,7 @@ public class Door : MonoBehaviour {
                     ResetAbilities();
                     ExtraLife();
                     AddTexts();
-                    SceneManager.LoadSceneAsync("Level5");
+                    SceneManager.LoadSceneAsync("Tome5");
                 }
             }
             else if (SceneManager.GetActiveScene().name == "Level5")
@@ -142,7 +142,7 @@ public class Door : MonoBehaviour {
                     PanelExit();
                     mg.score += 5000;
                     mg.success = true;
-                    SceneManager.LoadSceneAsync("Success");
+                    SceneManager.LoadSceneAsync("Tome6");
                 }
             }
 

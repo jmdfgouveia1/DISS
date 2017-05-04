@@ -19,6 +19,7 @@ public class MainGame : MonoBehaviour {
     private Player1 p;
     private SpriteRenderer sr;
     private int i;
+    private List<string> tomes;
 
 	// Use this for initialization
 	void Start () {
@@ -36,6 +37,14 @@ public class MainGame : MonoBehaviour {
         healthPoints = 3;
         i = 0;
         texts = new List<string>();
+
+        tomes = new List<string>();
+        tomes.Add("Tome1");
+        tomes.Add("Tome2");
+        tomes.Add("Tome3");
+        tomes.Add("Tome4");
+        tomes.Add("Tome5");
+        tomes.Add("Tome6");
     }
 	
 	// Update is called once per frame
@@ -104,7 +113,7 @@ public class MainGame : MonoBehaviour {
 
             if (g5)
             {
-                g6.GetComponent<Text>().fontSize = 42;
+                g6.GetComponent<Text>().fontSize = 36;
 
                 if (Input.GetKeyDown(KeyCode.M) && Time.timeScale == 1 && !activePanel)
                 {
@@ -141,7 +150,7 @@ public class MainGame : MonoBehaviour {
                 StartCoroutine(PlayerImmunity(2.0f, 0.2f));
         }
 
-        if (score > 0 && Time.timeScale == 1 && !success)
+        if (score > 0 && Time.timeScale == 1 && !success && checkIfNotTomes(SceneManager.GetActiveScene().name))
             score--;
 
         if (g1)
@@ -167,5 +176,16 @@ public class MainGame : MonoBehaviour {
     {
         SceneManager.LoadSceneAsync(s);
         locsLeft = i;
+    }
+
+    private bool checkIfNotTomes(string s)
+    {
+        for (int j = 0; j<tomes.Count-1; j++)
+        {
+            if (s == tomes[j])
+                return false;
+        }
+
+        return true;
     }
 }
