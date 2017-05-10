@@ -12,38 +12,38 @@ public class BPFC : MonoBehaviour {
 	void Start () {
         if (SceneManager.GetActiveScene().name == "Level1")
         {
-            upbound = 0.75f;
-            downbound = -10;
-            leftbound = -11.35f;
-            rightbound = 12.35f;
+            upbound = -1.7f;
+            downbound = -7.6f;
+            leftbound = -6.9f;
+            rightbound = 7.9f;
         }
         else if (SceneManager.GetActiveScene().name == "Level2")
         {
-            upbound = 6.7f;
-            downbound = -16.25f;
-            leftbound = -21.35f;
-            rightbound = 22.3f;
+            upbound = 4.3f;
+            downbound = -13.8f;
+            leftbound = -16.9f;
+            rightbound = 17.9f;
         }
         else if (SceneManager.GetActiveScene().name == "Level3")
         {
-            upbound = 23.25f;
-            downbound = -32.75f;
-            leftbound = -31.5f;
-            rightbound = 32.65f;
+            upbound = 20.75f;
+            downbound = -30.3f;
+            leftbound = -27.1f;
+            rightbound = 28.2f;
         }
         else if (SceneManager.GetActiveScene().name == "Level4")
         {
-            upbound = 121.25f;
-            downbound = -32.75f;
-            leftbound = -11.55f;
-            rightbound = 12.65f;
+            upbound = 118.8f;
+            downbound = -30.3f;
+            leftbound = -7.1f;
+            rightbound = 8.2f;
         }
         else if (SceneManager.GetActiveScene().name == "Level5")
         {
-            upbound = 21.25f;
-            downbound = -32.75f;
-            leftbound = -31.8f;
-            rightbound = 196.2f;
+            upbound = 18.8f;
+            downbound = -30.3f;
+            leftbound = -27.4f;
+            rightbound = 191.7f;
         }
 
     }

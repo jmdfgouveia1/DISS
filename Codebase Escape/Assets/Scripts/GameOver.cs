@@ -15,12 +15,12 @@ public class GameOver : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetButtonDown("Fire1"))
         {
             Destroy(g1);
-            SceneManager.LoadSceneAsync("Level1");
+            SceneManager.LoadSceneAsync("Tome1");
         }
-        else if (Input.GetKeyDown(KeyCode.Escape))
+        else if (Input.GetButtonDown("Cancel"))
         {
             Destroy(g1);
             SceneManager.LoadSceneAsync("MainMenu");

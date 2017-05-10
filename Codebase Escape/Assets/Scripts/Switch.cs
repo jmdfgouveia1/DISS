@@ -36,7 +36,7 @@ public class Switch : MonoBehaviour {
                 GetComponent<SpriteRenderer>().enabled = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Return) && onTrigger && Time.timeScale == 1 && GetComponent<SpriteRenderer>().enabled)
+        if (Input.GetButtonDown("Fire1") && onTrigger && Time.timeScale == 1 && GetComponent<SpriteRenderer>().enabled)
         {
             if (GetComponent<SpriteRenderer>().sprite == s1)
             {

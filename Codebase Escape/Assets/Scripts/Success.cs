@@ -19,12 +19,12 @@ public class Success : MonoBehaviour {
 	void Update () {
         GetComponent<Text>().text = "CONGRATULATIONS!\n\nYou escaped the codebase with a score of " + mg.score + ".\n\nPress the action button to play the game again or the escape button to return to the main menu.";
 
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetButtonDown("Fire1"))
         {
             Destroy(g1);
-            SceneManager.LoadSceneAsync("Level1");
+            SceneManager.LoadSceneAsync("Tome1");
         }
-        else if (Input.GetKeyDown(KeyCode.Escape))
+        else if (Input.GetButtonDown("Cancel"))
         {
             Destroy(g1);
             SceneManager.LoadSceneAsync("MainMenu");

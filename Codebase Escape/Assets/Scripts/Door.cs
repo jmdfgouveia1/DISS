@@ -42,7 +42,7 @@ public class Door : MonoBehaviour {
 
        if (!g2.GetComponent<Image>().enabled)
        {
-            if (Input.GetKeyDown(KeyCode.Return) && onTrigger && Time.timeScale == 1)
+            if (Input.GetButtonDown("Fire1") && onTrigger && Time.timeScale == 1 && !mg.pDocsActivated)
             {
                 g2.GetComponent<Image>().enabled = true;
                 g3.GetComponent<Text>().enabled = true;
@@ -54,12 +54,7 @@ public class Door : MonoBehaviour {
        {
             if (SceneManager.GetActiveScene().name == "Level1")
             {
-                if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1)
-                {
-                    goodFirstTry = false;
-                    PanelExit();
-                }
-                else if (Input.GetKeyDown(KeyCode.S))
+                if (Input.GetKeyDown(KeyCode.S) && Time.timeScale == 1)
                 {
                     PanelExit();
                     mg.moveSpeed += 4;
@@ -72,15 +67,15 @@ public class Door : MonoBehaviour {
                     mg.texts.Add(doc1.text1);
                     SceneManager.LoadSceneAsync("Tome2");
                 }
-            }
-            else if (SceneManager.GetActiveScene().name == "Level2")
-            {
-                if ((Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.F) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1)
+                else if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetButtonDown("Fire1")) && Time.timeScale == 1)
                 {
                     goodFirstTry = false;
                     PanelExit();
                 }
-                else if (Input.GetKeyDown(KeyCode.O))
+            }
+            else if (SceneManager.GetActiveScene().name == "Level2")
+            {
+                if (Input.GetKeyDown(KeyCode.O) && Time.timeScale == 1)
                 {
                     PanelExit();
                     mg.moveSpeed += 10;
@@ -91,15 +86,15 @@ public class Door : MonoBehaviour {
                     AddTexts();
                     SceneManager.LoadSceneAsync("Tome3");
                 }
-            }
-            else if (SceneManager.GetActiveScene().name == "Level3")
-            {
-                if ((Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1)
+                else if ((Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Fire1")) && Time.timeScale == 1)
                 {
                     goodFirstTry = false;
                     PanelExit();
                 }
-                else if (Input.GetKeyDown(KeyCode.L))
+            }
+            else if (SceneManager.GetActiveScene().name == "Level3")
+            {
+                if (Input.GetKeyDown(KeyCode.L) && Time.timeScale == 1)
                 {
                     PanelExit();
                     mg.jumpPower += 10;
@@ -110,15 +105,15 @@ public class Door : MonoBehaviour {
                     AddTexts();
                     SceneManager.LoadSceneAsync("Tome4");
                 }
-            }
-            else if (SceneManager.GetActiveScene().name == "Level4")
-            {
-                if ((Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1)
+                else if ((Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.R) || Input.GetButtonDown("Fire1")) && Time.timeScale == 1)
                 {
                     goodFirstTry = false;
                     PanelExit();
                 }
-                else if (Input.GetKeyDown(KeyCode.I))
+            }
+            else if (SceneManager.GetActiveScene().name == "Level4")
+            {
+                if (Input.GetKeyDown(KeyCode.I) && Time.timeScale == 1)
                 {
                     PanelExit();
                     mg.healthPoints += 10;
@@ -129,20 +124,25 @@ public class Door : MonoBehaviour {
                     AddTexts();
                     SceneManager.LoadSceneAsync("Tome5");
                 }
-            }
-            else if (SceneManager.GetActiveScene().name == "Level5")
-            {
-                if ((Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Return)) && Time.timeScale == 1)
+                else if ((Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.U) || Input.GetButtonDown("Fire1")) && Time.timeScale == 1)
                 {
                     goodFirstTry = false;
                     PanelExit();
                 }
-                else if (Input.GetKeyDown(KeyCode.D))
+            }
+            else if (SceneManager.GetActiveScene().name == "Level5")
+            {
+                if (Input.GetKeyDown(KeyCode.D) && Time.timeScale == 1)
                 {
                     PanelExit();
                     mg.score += 5000;
                     mg.success = true;
                     SceneManager.LoadSceneAsync("Tome6");
+                }
+                else if ((Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire1")) && Time.timeScale == 1)
+                {
+                    goodFirstTry = false;
+                    PanelExit();
                 }
             }
 

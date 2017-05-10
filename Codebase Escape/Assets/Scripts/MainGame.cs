@@ -11,7 +11,7 @@ public class MainGame : MonoBehaviour {
     public float moveSpeed, resetMoveSpeed;
     public float jumpPower, resetJumpPower;
     public int healthPoints;
-    public bool immunity, success, activePanel;
+    public bool immunity, success, activePanel, pDocsActivated;
     //public bool upgrade1, upgrade2, upgrade3, upgrade4;
     public List<string> texts;
 
@@ -19,6 +19,7 @@ public class MainGame : MonoBehaviour {
     private Player1 p;
     private SpriteRenderer sr;
     private int i;
+    private float leftPressTime, rightPressTime;
     private List<string> tomes;
 
 	// Use this for initialization
@@ -29,10 +30,11 @@ public class MainGame : MonoBehaviour {
         immunity = false;
         success = false;
         activePanel = false;
-        //locsLeft = 5;
-        moveSpeed = 20f;
+        pDocsActivated = false;
+        locsLeft = 5;
+        moveSpeed = 20;
         resetMoveSpeed = moveSpeed;
-        jumpPower = 20f;
+        jumpPower = 20;
         resetJumpPower = jumpPower;
         healthPoints = 3;
         i = 0;
@@ -56,107 +58,121 @@ public class MainGame : MonoBehaviour {
         g5 = GameObject.FindWithTag("PDocsPanel");
         g6 = GameObject.FindWithTag("PDocsPanelText");
 
-        if (Input.GetKeyDown(KeyCode.P))
+        if (checkIfNotTomes(SceneManager.GetActiveScene().name))
         {
-            if (g2)
+            if (Input.GetButtonDown("Submit"))
             {
-                g3.GetComponent<Text>().fontSize = 72;
-
-                if (Time.timeScale == 1)
+                if (g2)
                 {
-                    Time.timeScale = 0;
-                    g2.GetComponent<Image>().enabled = true;
-                    g3.GetComponent<Text>().enabled = true;
-                }
+                    g3.GetComponent<Text>().fontSize = 72;
 
-                else
-                {
-                    g2.GetComponent<Image>().enabled = false;
-                    g3.GetComponent<Text>().enabled = false;
-                    Time.timeScale = 1;
+                    if (Time.timeScale == 1)
+                    {
+                        Time.timeScale = 0;
+                        g2.GetComponent<Image>().enabled = true;
+                        g3.GetComponent<Text>().enabled = true;
+                    }
+
+                    else
+                    {
+                        g2.GetComponent<Image>().enabled = false;
+                        g3.GetComponent<Text>().enabled = false;
+                        Time.timeScale = 1;
+                    }
                 }
             }
-        }
 
-        if (Input.GetKeyDown(KeyCode.R) && Time.timeScale == 0)
-        {
-            if (SceneManager.GetActiveScene().name == "Level1")
+            if (Input.GetButtonDown("Fire3") && Time.timeScale == 0)
             {
-                SceneManager.LoadSceneAsync("Level1");
+                if (SceneManager.GetActiveScene().name == "Level1")
+                    ResetLevel("Level1", 5);
+                else if (SceneManager.GetActiveScene().name == "Level2")
+                    ResetLevel("Level2", 6);
+                else if (SceneManager.GetActiveScene().name == "Level3")
+                    ResetLevel("Level3", 7);
+                else if (SceneManager.GetActiveScene().name == "Level4")
+                    ResetLevel("Level4", 8);
+                else if (SceneManager.GetActiveScene().name == "Level5")
+                    ResetLevel("Level5", 1);
+
+                moveSpeed = resetMoveSpeed;
+                jumpPower = resetJumpPower;
+                Time.timeScale = 1;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 0)
+            {
+                SceneManager.LoadSceneAsync("MainMenu");
+                Time.timeScale = 1;
                 Destroy(gameObject);
             }
-            else if (SceneManager.GetActiveScene().name == "Level2")
-                ResetLevel("Level2", 6);
-            else if (SceneManager.GetActiveScene().name == "Level3")
-                ResetLevel("Level3", 7);
-            else if (SceneManager.GetActiveScene().name == "Level4")
-                ResetLevel("Level4", 8);
-            else if (SceneManager.GetActiveScene().name == "Level5")
-                ResetLevel("Level5", 1);
 
-            moveSpeed = resetMoveSpeed;
-            jumpPower = resetJumpPower;
-            Time.timeScale = 1;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale == 0)
-        {
-            SceneManager.LoadSceneAsync("MainMenu");
-            Time.timeScale = 1;
-            Destroy(gameObject);
-        }
-
-        if (g4)
-        {
-            p = g4.GetComponent<Player1>();
-            sr = g4.GetComponent<SpriteRenderer>();
-
-            if (g5)
+            if (g4)
             {
-                g6.GetComponent<Text>().fontSize = 36;
+                p = g4.GetComponent<Player1>();
+                sr = g4.GetComponent<SpriteRenderer>();
 
-                if (Input.GetKeyDown(KeyCode.M) && Time.timeScale == 1 && !activePanel)
+                if (g5)
                 {
-                    if (!g5.GetComponent<Image>().enabled)
-                    {
-                        g5.GetComponent<Image>().enabled = true;
-                        g6.GetComponent<Text>().enabled = true;
-                        p.movement = false;
-                    }
-                    else
-                    {
-                        g5.GetComponent<Image>().enabled = false;
-                        g6.GetComponent<Text>().enabled = false;
-                        p.movement = true;
-                    }
-                }
+                    g6.GetComponent<Text>().fontSize = 36;
 
-                if (g5.GetComponent<Image>().enabled)
-                {
-                    if (SceneManager.GetActiveScene().name == "Level1")
-                        g6.GetComponent<Text>().text = "";
-                    else
+                    if (Input.GetButtonDown("Fire2") && Time.timeScale == 1 && !activePanel)
                     {
-                        if (Input.GetKeyDown(KeyCode.A) && i != 0)
+                        if (!g5.GetComponent<Image>().enabled)
+                        {
+                            g5.GetComponent<Image>().enabled = true;
+                            g6.GetComponent<Text>().enabled = true;
+                            pDocsActivated = true;
+                            p.movement = false;
+                        }
+                        else
+                        {
+                            g5.GetComponent<Image>().enabled = false;
+                            g6.GetComponent<Text>().enabled = false;
+                            pDocsActivated = false;
+                            p.movement = true;
+                        }
+                    }
+
+                    if (g5.GetComponent<Image>().enabled)
+                    {
+                        if (Input.GetButtonDown("Horizontal") && Input.GetAxis("Horizontal") < 0 && i != 0)
+                        {
                             i -= 1;
-                        else if (Input.GetKeyDown(KeyCode.D) && i != texts.Count - 1)
+                            leftPressTime = Time.time;
+                        }
+                        if (Input.GetButton("Horizontal") && Input.GetAxis("Horizontal") < 0)
+                        {
+                            if (Time.time - leftPressTime > 0.5 && i != 0)
+                                i -= 1;
+                        }
+                        if (Input.GetButtonDown("Horizontal") && Input.GetAxis("Horizontal") > 0 && i != texts.Count - 1)
+                        {
                             i += 1;
+                            rightPressTime = Time.time;
+                        }
+                        if (Input.GetButton("Horizontal") && Input.GetAxis("Horizontal") > 0)
+                        {
+                            if (Time.time - rightPressTime > 0.5 && i != texts.Count - 1)
+                                i += 1;
+                        }
+                                
                         g6.GetComponent<Text>().text = texts[i];
                     }
                 }
+
+                if (immunity)
+                    StartCoroutine(PlayerImmunity(2.0f, 0.2f));
             }
 
-            if (immunity)
-                StartCoroutine(PlayerImmunity(2.0f, 0.2f));
+            if (score > 0 && Time.timeScale == 1 && !success && checkIfNotTomes(SceneManager.GetActiveScene().name))
+                score--;
         }
-
-        if (score > 0 && Time.timeScale == 1 && !success && checkIfNotTomes(SceneManager.GetActiveScene().name))
-            score--;
 
         if (g1)
             g1.GetComponent<Text>().text = healthPoints.ToString();
 
-        if (healthPoints == 0)
+        if (healthPoints == 0 && SceneManager.GetActiveScene().name != "GameOver")
             SceneManager.LoadSceneAsync("GameOver");
 	}
 
@@ -164,7 +180,8 @@ public class MainGame : MonoBehaviour {
     {
         while (time > 0)
         {
-            sr.enabled = !sr.enabled;
+            if (g4)
+                sr.enabled = !sr.enabled;
             yield return new WaitForSeconds(subTime);
             time -= subTime;
         }
