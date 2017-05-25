@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class Switch : MonoBehaviour {
 
-    public Sprite s1, s2;
     public string t;
 
+    private Color c1, c2;
     private GameObject p, gc, st;
     private GameObject[] gs;
     private MainGame mg;
@@ -21,7 +21,8 @@ public class Switch : MonoBehaviour {
         st = GameObject.FindWithTag("SwitchText");
         mg = gc.GetComponent<MainGame>();
         onTrigger = false;
-        GetComponent<SpriteRenderer>().sprite = s1;
+        c1 = new Color(1, 1, 1, 1);
+        c2 = new Color(0.5f, 0.5f, 0.5f, 1);
         foreach (GameObject g in gs)
             g.GetComponent<MovingPlatform>().enabled = false;
 	}
@@ -38,9 +39,9 @@ public class Switch : MonoBehaviour {
 
         if (Input.GetButtonDown("Fire1") && onTrigger && Time.timeScale == 1 && GetComponent<SpriteRenderer>().enabled)
         {
-            if (GetComponent<SpriteRenderer>().sprite == s1)
+            if (GetComponent<SpriteRenderer>().color == c1)
             {
-                GetComponent<SpriteRenderer>().sprite = s2;
+                GetComponent<SpriteRenderer>().color = c2;
                 st.GetComponent<Text>().text = "";
                 foreach (GameObject g in gs)
                     g.GetComponent<MovingPlatform>().enabled = true;
@@ -52,7 +53,7 @@ public class Switch : MonoBehaviour {
     {
         if (p == other.gameObject)
         {
-            if (gameObject.tag == "FirstSwitch" && GetComponent<SpriteRenderer>().sprite == s1)
+            if (gameObject.tag == "FirstSwitch" && GetComponent<SpriteRenderer>().color == c1)
                 st.GetComponent<Text>().text = "Press the switch and something will happen.";
         }
             onTrigger = true;
