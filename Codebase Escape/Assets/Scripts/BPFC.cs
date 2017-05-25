@@ -12,15 +12,15 @@ public class BPFC : MonoBehaviour {
 	void Start () {
         if (SceneManager.GetActiveScene().name == "Level1")
         {
-            upbound = -1.7f;
-            downbound = -7.6f;
-            leftbound = -6.9f;
-            rightbound = 7.9f;
+            upbound = -1.5f;
+            downbound = -7.8f;
+            leftbound = -6.8f;
+            rightbound = 7.8f;
         }
         else if (SceneManager.GetActiveScene().name == "Level2")
         {
-            upbound = 4.3f;
-            downbound = -13.8f;
+            upbound = 4.5f;
+            downbound = -14;
             leftbound = -16.9f;
             rightbound = 17.9f;
         }

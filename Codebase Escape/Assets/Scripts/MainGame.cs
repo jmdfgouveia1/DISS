@@ -114,7 +114,7 @@ public class MainGame : MonoBehaviour {
 
                 if (g5)
                 {
-                    g6.GetComponent<Text>().fontSize = 36;
+                    g6.GetComponent<Text>().fontSize = 32;
 
                     if (Input.GetButtonDown("Fire2") && Time.timeScale == 1 && !activePanel)
                     {

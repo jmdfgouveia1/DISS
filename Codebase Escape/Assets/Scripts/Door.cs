@@ -30,7 +30,7 @@ public class Door : MonoBehaviour {
             doc2 = g6.GetComponent<DOC>();
         g2.GetComponent<Image>().enabled = false;
         g3.GetComponent<Text>().enabled = false;
-        g3.GetComponent<Text>().fontSize = 36;
+        g3.GetComponent<Text>().fontSize = 32;
     }
 
     // Update is called once per frame
@@ -167,7 +167,8 @@ public class Door : MonoBehaviour {
     void OnTriggerExit2D(Collider2D other)
     {
         onTrigger = false;
-        g1.GetComponent<Text>().text = "";
+        if (SceneManager.GetActiveScene().name == "Level1")
+            g1.GetComponent<Text>().text = "";
     }
 
     void PanelExit()

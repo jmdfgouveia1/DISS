@@ -24,7 +24,7 @@ public class DOC : MonoBehaviour {
         g2.GetComponent<Image>().enabled = false;
         g3.GetComponent<Text>().enabled = false;
         g3.GetComponent<Text>().text = "";
-        g3.GetComponent<Text>().fontSize = 36;
+        g3.GetComponent<Text>().fontSize = 32;
     }
 
     void Update ()
@@ -88,7 +88,8 @@ public class DOC : MonoBehaviour {
     void OnTriggerExit2D(Collider2D other)
     {
         onTrigger = false;
-        g1.GetComponent<Text>().text = "";
+        if (SceneManager.GetActiveScene().name == "Level1")
+            g1.GetComponent<Text>().text = "";
     }
 
     void DifferentDocsDifferentTexts(string s1, string s2)

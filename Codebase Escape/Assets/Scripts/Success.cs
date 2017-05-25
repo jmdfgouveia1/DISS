@@ -17,7 +17,7 @@ public class Success : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        GetComponent<Text>().text = "CONGRATULATIONS!\n\nYou escaped the codebase with a score of " + mg.score + ".\n\nPress the action button to play the game again or the escape button to return to the main menu.";
+        GetComponent<Text>().text = "CONGRATULATIONS!\n\nYou escaped the code base with a score of " + mg.score + ".\n\nPress the action button to play the game again or the escape button to return to the main menu.";
 
         if (Input.GetButtonDown("Fire1"))
         {

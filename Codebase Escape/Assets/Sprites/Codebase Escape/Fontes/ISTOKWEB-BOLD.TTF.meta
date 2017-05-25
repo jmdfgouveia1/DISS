@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 97614f8d020002944bd6430910ce80f6
+timeCreated: 1495624417
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Istok Web
+  fontNames:
+  - Istok Web
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 64c99e80ea5dd8240b96ddd237f3f4be, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
