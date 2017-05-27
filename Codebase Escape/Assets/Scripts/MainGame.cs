@@ -32,9 +32,9 @@ public class MainGame : MonoBehaviour {
         activePanel = false;
         pDocsActivated = false;
         locsLeft = 5;
-        moveSpeed = 20;
+        moveSpeed = 15;
         resetMoveSpeed = moveSpeed;
-        jumpPower = 20;
+        jumpPower = 15;
         resetJumpPower = jumpPower;
         healthPoints = 3;
         i = 0;

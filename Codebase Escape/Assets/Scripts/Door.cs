@@ -57,8 +57,8 @@ public class Door : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.S) && Time.timeScale == 1)
                 {
                     PanelExit();
-                    mg.moveSpeed += 4;
-                    mg.jumpPower += 4;
+                    mg.moveSpeed += 5;
+                    mg.jumpPower += 5;
                     mg.healthPoints += 2;
                     mg.locsLeft = 6;
                     mg.score += 5000;
