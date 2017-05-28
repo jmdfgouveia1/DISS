@@ -57,8 +57,8 @@ public class Door : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.S) && Time.timeScale == 1)
                 {
                     PanelExit();
-                    mg.moveSpeed += 5;
-                    mg.jumpPower += 5;
+                    mg.moveSpeed += 2;
+                    mg.jumpPower += 2;
                     mg.healthPoints += 2;
                     mg.locsLeft = 6;
                     mg.score += 5000;
@@ -135,7 +135,7 @@ public class Door : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.D) && Time.timeScale == 1)
                 {
                     PanelExit();
-                    mg.score += 5000;
+                    mg.score += 50000;
                     mg.success = true;
                     SceneManager.LoadSceneAsync("Tome6");
                 }

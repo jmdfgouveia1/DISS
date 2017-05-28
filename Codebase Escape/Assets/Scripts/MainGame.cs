@@ -12,7 +12,6 @@ public class MainGame : MonoBehaviour {
     public float jumpPower, resetJumpPower;
     public int healthPoints;
     public bool immunity, success, activePanel, pDocsActivated;
-    //public bool upgrade1, upgrade2, upgrade3, upgrade4;
     public List<string> texts;
 
     private GameObject g1, g2, g3, g4, g5, g6;
@@ -32,9 +31,9 @@ public class MainGame : MonoBehaviour {
         activePanel = false;
         pDocsActivated = false;
         locsLeft = 5;
-        moveSpeed = 15;
+        moveSpeed = 20;
         resetMoveSpeed = moveSpeed;
-        jumpPower = 15;
+        jumpPower = 20;
         resetJumpPower = jumpPower;
         healthPoints = 3;
         i = 0;
@@ -166,7 +165,12 @@ public class MainGame : MonoBehaviour {
             }
 
             if (score > 0 && Time.timeScale == 1 && !success && checkIfNotTomes(SceneManager.GetActiveScene().name))
-                score--;
+            {
+                if (activePanel)
+                    StartCoroutine(CountdownSlowdown(0.5f));
+                else
+                    score--;
+            }
         }
 
         if (g1)
@@ -187,6 +191,12 @@ public class MainGame : MonoBehaviour {
         }
         sr.enabled = true;
         immunity = false;
+    }
+
+    private IEnumerator CountdownSlowdown(float time)
+    {
+        yield return new WaitForSeconds(time);
+        score--;
     }
 
     void ResetLevel(string s, int i)

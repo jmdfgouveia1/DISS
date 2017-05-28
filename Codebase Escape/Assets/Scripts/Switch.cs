@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Switch : MonoBehaviour {
 
@@ -42,7 +43,6 @@ public class Switch : MonoBehaviour {
             if (GetComponent<SpriteRenderer>().color == c1)
             {
                 GetComponent<SpriteRenderer>().color = c2;
-                st.GetComponent<Text>().text = "";
                 foreach (GameObject g in gs)
                     g.GetComponent<MovingPlatform>().enabled = true;
             }
@@ -53,7 +53,7 @@ public class Switch : MonoBehaviour {
     {
         if (p == other.gameObject)
         {
-            if (gameObject.tag == "FirstSwitch" && GetComponent<SpriteRenderer>().color == c1)
+            if (gameObject.tag == "FirstSwitch" && GetComponent<SpriteRenderer>().color == c1 && SceneManager.GetActiveScene().name == "Level3")
                 st.GetComponent<Text>().text = "Press the switch and something will happen.";
         }
             onTrigger = true;
@@ -63,7 +63,8 @@ public class Switch : MonoBehaviour {
     {
         if (p == other.gameObject)
         {
-            st.GetComponent<Text>().text = "";
+            if (SceneManager.GetActiveScene().name == "Level3")
+                st.GetComponent<Text>().text = "";
             onTrigger = false;
         }
     }
