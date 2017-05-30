@@ -17,7 +17,7 @@ public class MainGame : MonoBehaviour {
     private GameObject g1, g2, g3, g4, g5, g6;
     private Player1 p;
     private SpriteRenderer sr;
-    private int i;
+    private int i, k;
     private float leftPressTime, rightPressTime;
     private List<string> tomes;
 
@@ -37,6 +37,7 @@ public class MainGame : MonoBehaviour {
         resetJumpPower = jumpPower;
         healthPoints = 3;
         i = 0;
+        k = 10;
         texts = new List<string>();
 
         tomes = new List<string>();
@@ -167,7 +168,15 @@ public class MainGame : MonoBehaviour {
             if (score > 0 && Time.timeScale == 1 && !success && checkIfNotTomes(SceneManager.GetActiveScene().name))
             {
                 if (activePanel)
-                    StartCoroutine(CountdownSlowdown(0.5f));
+                {
+                    if (k > 0)
+                        k--;
+                    else
+                    {
+                        score--;
+                        k = 10;
+                    }
+                }
                 else
                     score--;
             }
@@ -191,12 +200,6 @@ public class MainGame : MonoBehaviour {
         }
         sr.enabled = true;
         immunity = false;
-    }
-
-    private IEnumerator CountdownSlowdown(float time)
-    {
-        yield return new WaitForSeconds(time);
-        score--;
     }
 
     void ResetLevel(string s, int i)

@@ -42,6 +42,8 @@ public class Switch : MonoBehaviour {
         {
             if (GetComponent<SpriteRenderer>().color == c1)
             {
+                if (SceneManager.GetActiveScene().name == "Level3")
+                    st.GetComponent<Text>().text = "";
                 GetComponent<SpriteRenderer>().color = c2;
                 foreach (GameObject g in gs)
                     g.GetComponent<MovingPlatform>().enabled = true;
