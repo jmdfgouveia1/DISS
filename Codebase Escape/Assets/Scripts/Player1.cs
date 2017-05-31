@@ -19,9 +19,6 @@ public class Player1 : MonoBehaviour {
         rb.gravityScale = 1;
     }
 
-	/// <summary>
-    /// 
-    /// </summary>
     void Update () {
 
         if (movement) {
@@ -30,7 +27,10 @@ public class Player1 : MonoBehaviour {
             if (Input.GetButton("Horizontal") && Input.GetAxis("Horizontal") > 0)
                 transform.Translate(Vector2.right * mg.moveSpeed * Time.deltaTime);
             if ((Input.GetButtonDown("Vertical") && Input.GetAxis("Vertical") > 0) || Input.GetButtonDown("Jump"))
+            {
                 rb.AddForce(Vector2.up * mg.jumpPower * 50);
+                GetComponent<AudioSource>().Play();
+            }
             if ((Input.GetButtonUp("Vertical") && Input.GetAxis("Vertical") > 0) || Input.GetButtonUp("Jump"))
                 rb.AddForce(Vector2.down * mg.jumpPower * 50);
         }

@@ -39,6 +39,7 @@ public class UltimateFoe : MonoBehaviour {
             mg.moveSpeed -= 2.5f;
             mg.jumpPower -= 2.5f;
             mg.healthPoints -= 5;
+            GetComponent<AudioSource>().Play();
             mg.immunity = true;
         }
     }

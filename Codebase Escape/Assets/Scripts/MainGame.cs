@@ -11,10 +11,10 @@ public class MainGame : MonoBehaviour {
     public float moveSpeed, resetMoveSpeed;
     public float jumpPower, resetJumpPower;
     public int healthPoints;
-    public bool immunity, success, activePanel, pDocsActivated;
+    public bool immunity, success, locCaught, activePanel, pDocsActivated;
     public List<string> texts;
 
-    private GameObject g1, g2, g3, g4, g5, g6;
+    private GameObject g1, g2, g3, g4, g5, g6, g7;
     private Player1 p;
     private SpriteRenderer sr;
     private int i, k;
@@ -28,6 +28,7 @@ public class MainGame : MonoBehaviour {
         score = 5000;
         immunity = false;
         success = false;
+        locCaught = false;
         activePanel = false;
         pDocsActivated = false;
         locsLeft = 5;
@@ -57,6 +58,7 @@ public class MainGame : MonoBehaviour {
         g4 = GameObject.FindWithTag("Player");
         g5 = GameObject.FindWithTag("PDocsPanel");
         g6 = GameObject.FindWithTag("PDocsPanelText");
+        g7 = GameObject.FindWithTag("BackgroundMusic");
 
         if (checkIfNotTomes(SceneManager.GetActiveScene().name))
         {
@@ -69,6 +71,8 @@ public class MainGame : MonoBehaviour {
                     if (Time.timeScale == 1)
                     {
                         Time.timeScale = 0;
+                        if (g7)
+                            g7.GetComponent<AudioSource>().Pause();
                         g2.GetComponent<Image>().enabled = true;
                         g3.GetComponent<Text>().enabled = true;
                     }
@@ -77,6 +81,8 @@ public class MainGame : MonoBehaviour {
                     {
                         g2.GetComponent<Image>().enabled = false;
                         g3.GetComponent<Text>().enabled = false;
+                        if (g7)
+                            g7.GetComponent<AudioSource>().Play();
                         Time.timeScale = 1;
                     }
                 }
@@ -167,7 +173,7 @@ public class MainGame : MonoBehaviour {
 
             if (score > 0 && Time.timeScale == 1 && !success && checkIfNotTomes(SceneManager.GetActiveScene().name))
             {
-                if (activePanel)
+                if (activePanel || pDocsActivated)
                 {
                     if (k > 0)
                         k--;
@@ -184,6 +190,12 @@ public class MainGame : MonoBehaviour {
 
         if (g1)
             g1.GetComponent<Text>().text = healthPoints.ToString();
+
+        if (locCaught)
+        {
+            GetComponent<AudioSource>().Play();
+            locCaught = false;
+        }
 
         if (healthPoints == 0 && SceneManager.GetActiveScene().name != "GameOver")
             SceneManager.LoadSceneAsync("GameOver");

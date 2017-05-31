@@ -29,6 +29,7 @@ public class LOC : MonoBehaviour {
                 PlayerEffect(0.4f);
             else if (SceneManager.GetActiveScene().name == "Level5")
                 PlayerEffect(0.3f);
+            mg.locCaught = true;
             mg.locsLeft--;
             Destroy(gameObject);
         }

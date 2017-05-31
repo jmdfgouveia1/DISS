@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Door : MonoBehaviour {
 
     public Sprite s1, s2;
+    public AudioClip a1, a2;
     public Player1 p;
 
     private MainGame mg;
@@ -31,6 +32,7 @@ public class Door : MonoBehaviour {
         g2.GetComponent<Image>().enabled = false;
         g3.GetComponent<Text>().enabled = false;
         g3.GetComponent<Text>().fontSize = 32;
+        GetComponent<AudioSource>().clip = a1;
     }
 
     // Update is called once per frame
@@ -46,6 +48,8 @@ public class Door : MonoBehaviour {
             {
                 g2.GetComponent<Image>().enabled = true;
                 g3.GetComponent<Text>().enabled = true;
+                GetComponent<AudioSource>().clip = a1;
+                GetComponent<AudioSource>().Play();
                 mg.activePanel = true;
                 p.movement = false;
             }
@@ -69,6 +73,8 @@ public class Door : MonoBehaviour {
                 }
                 else if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetButtonDown("Fire1")) && Time.timeScale == 1)
                 {
+                    GetComponent<AudioSource>().clip = a2;
+                    GetComponent<AudioSource>().Play();
                     goodFirstTry = false;
                     PanelExit();
                 }
@@ -88,6 +94,8 @@ public class Door : MonoBehaviour {
                 }
                 else if ((Input.GetKeyDown(KeyCode.U) || Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("Fire1")) && Time.timeScale == 1)
                 {
+                    GetComponent<AudioSource>().clip = a2;
+                    GetComponent<AudioSource>().Play();
                     goodFirstTry = false;
                     PanelExit();
                 }
@@ -107,6 +115,8 @@ public class Door : MonoBehaviour {
                 }
                 else if ((Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.R) || Input.GetButtonDown("Fire1")) && Time.timeScale == 1)
                 {
+                    GetComponent<AudioSource>().clip = a2;
+                    GetComponent<AudioSource>().Play();
                     goodFirstTry = false;
                     PanelExit();
                 }
@@ -126,6 +136,8 @@ public class Door : MonoBehaviour {
                 }
                 else if ((Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.U) || Input.GetButtonDown("Fire1")) && Time.timeScale == 1)
                 {
+                    GetComponent<AudioSource>().clip = a2;
+                    GetComponent<AudioSource>().Play();
                     goodFirstTry = false;
                     PanelExit();
                 }
@@ -141,6 +153,8 @@ public class Door : MonoBehaviour {
                 }
                 else if ((Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Fire1")) && Time.timeScale == 1)
                 {
+                    GetComponent<AudioSource>().clip = a2;
+                    GetComponent<AudioSource>().Play();
                     goodFirstTry = false;
                     PanelExit();
                 }

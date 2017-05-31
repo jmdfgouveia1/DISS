@@ -64,6 +64,7 @@ public class DOC : MonoBehaviour {
 
                 g2.GetComponent<Image>().enabled = true;
                 g3.GetComponent<Text>().enabled = true;
+                GetComponent<AudioSource>().Play();
                 mg.activePanel = true;
                 p.movement = false;
             }

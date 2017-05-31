@@ -66,6 +66,7 @@ public class Foe : MonoBehaviour {
             else if (gameObject.tag == "DamageFoe")
                 mg.healthPoints--;
 
+            GetComponent<AudioSource>().Play();
             mg.immunity = true;
         }
     }
